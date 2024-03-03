@@ -2,17 +2,23 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import NameForm from '../../components/NameForm/NameForm';
 
+// Composant du tableau de bord
 function Dashboard() {
+	// Extraction des informations d'authentification de Redux
     const { loggedIn, user } = useSelector((state) => state.auth);
+	// État local pour gérer l'édition du nom
     const [isModifying, toggleEdit] = useState(false);
 
-    const handleSaveName = (updatedUser) => {
+	// Gestionnaire pour sauvegarder les modifications du nom
+    const handleSaveName = () => {
         toggleEdit(false); 
     };
 
+	// Gestionnaires pour activer/désactiver l'édition du nom
     const handleEditClick = () => toggleEdit(true);
     const handleCancelEdit = () => toggleEdit(false);
 
+	// Construction du DOM du tableau de bord
     return (
         <main className="main bg-dark">
             <div className="header">
