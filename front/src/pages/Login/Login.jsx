@@ -15,13 +15,12 @@ function SignIn() {
         ("Sign In clicked");
         dispatch(login({ email: username, password }))
             .then((response) => {
-                if (response.type.endsWith('fulfilled')) {
+                if (response.meta.requestStatus === 'fulfilled') {
                     navigate("/profile");
-                } 
+                } else {
+                    alert("Mot de passe ou login erronés");
+                }
             })
-            .catch((error) => {
-                console.error("Login error", error);
-            });
     };
 
     return (
