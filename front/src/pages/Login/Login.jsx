@@ -5,16 +5,20 @@ import { login } from "../../redux/authSlice";
 import "./Login.css"
 
 function SignIn() {
+    // État local pour les champs du formulaire
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [rememberMe, setRememberMe] = useState(false);
+    // Hooks pour la navigation et le dispatch d'actions Redux
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    // Gestionnaire pour le bouton de connexion
     const handleSignIn = () => {
         ("Sign In clicked");
         dispatch(login({ email: username, password }))
             .then((response) => {
+ 
                 if (response.meta.requestStatus === 'fulfilled') {
                     navigate("/profile");
                 } else {
@@ -22,7 +26,7 @@ function SignIn() {
                 }
             })
     };
-
+    // Éléments DOM du formulaire de connexion
     return (
         <main className="main bg-dark">
             <section className="sign-in-content">

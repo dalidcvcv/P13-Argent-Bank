@@ -7,9 +7,10 @@ import { faUserCircle, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import './Header.css'
 
 function Header() {
-	const loggedIn = useSelector((state) => state.auth.loggedIn);
-	const user = useSelector((state) => state.auth.user);
+	const loggedIn = useSelector((state) => state.auth.loggedIn);// Accès à l'état de connexion
+	const user = useSelector((state) => state.auth.user);// Accès aux infos utilisateur
 	const dispatch = useDispatch();
+	// Gère la déconnexion de l'utilisateur
 	const handleSignOut = () => { localStorage.clear(); dispatch(signOut()); };
 
 	return (
